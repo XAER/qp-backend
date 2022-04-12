@@ -45,6 +45,15 @@ func SearchLineDataHandler(c *gin.Context) {
 	parsedRes := models.SearchLineDataResponse{}
 	json.Unmarshal([]byte(string(text)), &parsedRes)
 
+	// LOG the request in the Logs table
+
+	// Return the response to the client
 	c.JSON(http.StatusOK, parsedRes)
+
+	loggingError := lib.LogRequest(200, "Requested data from line:"+string(req.SearchedText), c.ClientIP(), "OK")
+	if loggingError != nil {
+		lib.RespondWithError(c, http.StatusInternalServerError, loggingError.Error())
+		return
+	}
 
 }

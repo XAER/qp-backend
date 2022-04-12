@@ -28,6 +28,9 @@ func initApp() {
 func main() {
 	initApp()
 
-	config.App = config.NewServices(router, &ginConfig, ginConfig.SERVER_ENV)
+	db := config.GetConnection()
+
+	config.App = config.NewServices(db, router, &ginConfig, ginConfig.SERVER_ENV)
+
 	log.Fatal(router.Run(fmt.Sprintf("0.0.0.0:%s", ginConfig.SERVER_PORT)))
 }

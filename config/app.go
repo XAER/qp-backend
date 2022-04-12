@@ -1,17 +1,23 @@
 package config
 
-import "github.com/gin-gonic/gin"
+import (
+	"gorm.io/gorm"
+
+	"github.com/gin-gonic/gin"
+)
 
 var App *Services
 
 type Services struct {
+	DB   *gorm.DB
 	R    *gin.Engine
 	C    *GConfig
 	MODE string
 }
 
-func NewServices(R *gin.Engine, C *GConfig, MODE string) *Services {
+func NewServices(DB *gorm.DB, R *gin.Engine, C *GConfig, MODE string) *Services {
 	return &Services{
+		DB:   DB,
 		R:    R,
 		C:    C,
 		MODE: MODE,
