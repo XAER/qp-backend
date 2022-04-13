@@ -1,8 +1,7 @@
 FROM golang:1.18-alpine
 
 ENV PROJECT_DIR=/app \
-    GO111MODULE=auto \
-    CGO_ENABLED=
+    GO111MODULE=auto 
 
 WORKDIR ${PROJECT_DIR}
 
