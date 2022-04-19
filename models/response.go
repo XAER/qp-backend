@@ -13,3 +13,7 @@ type SearchLineDataResponse struct {
 	Lines []string `json:"Lines"`
 	Stops []Stops  `json:"Stops"`
 }
+
+type GetRealTimeDataResponse struct {
+	RealTimeData RealTimeData `json:"RealTimeData"`
+}

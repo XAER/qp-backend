@@ -29,6 +29,7 @@ func SetupRouter() *gin.Engine {
 		v1.GET("/ping", controllers.PingHandler)
 		v1.POST("/searchLineData", controllers.SearchLineDataHandler)
 		v1.GET("/testDBConnection", controllers.TestDBConnectionHandler)
+		v1.GET("/getStopRealTimeData/:languageName/:stopCode", controllers.GetStopRealTimeDataHandler)
 	}
 
 	return r
